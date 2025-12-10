@@ -634,6 +634,47 @@ E_debias = E - dot.unsqueeze(-1) * v_b</pre>
   they represent independent bias mechanisms worth probing separately.
 </p>
 
+<div style="text-align:center;">
+  <img src="./2ss.png" width="400px" />
+  <div style="font-size:14px; color:#555;">
+    <b>Figure X.</b> PCA loadings of bias features, showing how each bias contributes to the top two principal components.
+  </div>
+</div>
+
+<p>
+  PCA loadings reveal that several surface features cluster into distinct groups: length-related metrics
+  (tokens, characters, symbols) dominate one principal direction, while redundancy and overlap dominate another.
+  Meanwhile, stylistic indicators such as pronoun density, sentiment, and formality occupy a separate, weaker
+  axis of variation. This separation suggests that the biases present in LLM-generated text are multi-factor and
+  not reducible to a single latent dimension, motivating the need for both probing and causal methods to isolate
+  their effects.
+</p>
+
+<p>
+  This figure shows that all of our bias features have only weak correlation with human correctness labels:
+  even the strongest signals (character length, novelty, redundancy, unigram overlap) barely exceed a
+  correlation of 0.06. Stylistic features such as hedging, safety language, pronoun use, and formality are
+  even less predictive of correctness. Together with our PCA results, this suggests that superficial style
+  dimensions are largely orthogonal to whether an answer is actually good, motivating the need to treat
+  them as biases rather than useful scoring features for an LLM judge.
+</p>
+
+<div style="text-align:center;">
+  <img src="./5_ss.png" width="600px" />
+  <div style="font-size:14px; color:#555;">
+    <b>Figure X.</b> PCA projection of bias features, colored by answer position (A vs. B).
+  </div>
+</div>
+
+<p>
+  This plot shows a surprisingly clean separation between answers labeled “A” and “B” in the PCA space,
+  indicating that position in the prompt is strongly entangled with bias features (e.g., verbosity,
+  redundancy, length). Because PCA is unsupervised, this separation implies that surface-level expression
+  patterns differ systematically between the two answer slots. This reinforces that position bias is not a
+  trivial artifact—it genuinely changes how answers are written, which may in turn influence LLM judges.
+</p>
+
+
 		    </div>
 		    <div class="margin-right-block">
 
