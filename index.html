@@ -224,7 +224,8 @@
               <a href="#intro">Introduction</a><br><br>
               <a href="#does_x_do_y">Background &amp; Setup</a><br><br>
               <a href="#methods">Methods &amp; Experiments</a><br><br>
-              <a href="#implications_and_limitations">Implications and limitations</a><br><br>
+              <a href="#results">Results &amp; Discussion</a><br><br>
+              <a href="#conclusion">Conclusion</a><br><br>
           </div>
 				</div>
 		    <div class="main-content-block">
@@ -360,6 +361,7 @@
 				</div>
 		    <div class="main-content-block">
             <h1>Methods and experiments</h1>
+Our pipeline has three main parts. First, we build an LLM-as-Jury judge: four models (Llama, Qwen, Mistral, Phi) independently score every MT-Bench answer pair, and we combine their votes using averages, majorities, and parameter-weighted scoring. Second, we compute a broad set of bias features for every answer—things like verbosity, sentiment, hedging, safety disclaimers, overlap with the prompt, etc.—so we can see which surface features might be influencing the judges. Third, we run two deeper analyses: sparse probing, which checks which layers of an LLM encode each bias vs. actual correctness, and causal interventions, where we estimate a direction in embedding space corresponding to a bias and project it out to see how the judge’s behavior changes. Together these steps give us a full picture of what biases exist, where they come from, and how much they actually affect scoring.
 
             <h2>Building the evaluation dataset</h2>
             We begin from the MT-Bench human-judgment release. Using the provided JSONL file of questions and the <code>gpt4_pair</code> / human judgment Parquet files, we construct a tabular dataset of pairwise comparisons:
@@ -610,11 +612,39 @@ E_debias = E - dot.unsqueeze(-1) * v_b</pre>
 		    </div>
 		</div>
 
-		<div class="content-margin-container" id="implications_and_limitations">
+<div class="content-margin-container" id="results">
 				<div class="margin-left-block">
 				</div>
 		    <div class="main-content-block">
-						<h1>Implications and limitations</h1>
+						<h1>Results &amp Discussion</h1>
+						<div style="text-align:center;">
+  <img src="./images/1ss.png" width="400px" />
+  <div style="font-size:14px; color:#555;">
+    <b>Figure X.</b> Correlation matrix of extracted bias features across all answers.
+  </div>
+</div>
+
+<p>
+  This figure shows that several bias features naturally cluster. Redundancy, unigram overlap,
+  and bigram overlap are nearly perfectly correlated, forming a single axis capturing
+  “prompt-copying” behavior, with novelty acting as its inverse. Length-related features
+  (token count, character count, digits, symbols) also correlate, suggesting verbosity behaves
+  as a coherent stylistic mode. In contrast, position, sentiment, hedging, safety language,
+  formality, and pronoun density exhibit weak correlations with other features, implying
+  they represent independent bias mechanisms worth probing separately.
+</p>
+
+		    </div>
+		    <div class="margin-right-block">
+
+		    </div>
+		</div>
+
+		<div class="content-margin-container" id="conclusion">
+				<div class="margin-left-block">
+				</div>
+		    <div class="main-content-block">
+						<h1>Conclusion</h1>
 						Our analysis suggests that LLM-based judges are not monolithic “oracles,” but systems whose preferences can be decomposed into interpretable bias dimensions and manipulated via simple linear interventions. Multi-model ensembles (“LLM-as-jury”) smooth out some idiosyncratic biases of individual judges, especially extreme verbosity preferences, but they do not fully eliminate systematic tendencies toward redundancy, politeness, and certain stylistic patterns. The causal intervention experiments show that a non-trivial fraction of judge behavior is attributable to specific directions in embedding space: projecting out a verbosity or redundancy direction can measurably reduce bias sensitivity while preserving much of the correctness signal.<br><br>
 
             The probing analysis indicates that lexical and stylistic biases are often linearly decodable from early and mid layers, while correctness signals emerge later. This layering supports a useful mental model: the network first builds a rich representation of surface form and style, then aggregates it into preference decisions. If downstream systems naively use judge scores as ground truth, they risk baking these shallow biases into training loops, leaderboards, and deployment decisions.<br><br>
