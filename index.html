@@ -191,18 +191,18 @@
             <table class="header" align=left>
                 <tr>
                   <td colspan=4>
-                    <span style="font-size: 32px; font-family: 'Courier New', Courier, monospace;">A Grand Unified Theory of Deep Learning</span>
+                    <span style="font-size: 32px; font-family: 'Courier New', Courier, monospace;">Judging the Judges: Probing and Causal Debiasing of LLM-as-Jury Evaluators</span>
                   </td>
                 </tr>
                 <tr>
                     <td align=left>
-                        <span style="font-size:17px"><a href="your_website">Your name</a></span>
+                        <span style="font-size:17px"><a href="your_website">Audrey Wei</a></span>
                     </td>
                     <td align=left>
-                        <span style="font-size:17px"><a href="your_partner's_website">Your partner's name</a></span>
+      
                     </td>
                 <tr>
-                  <td colspan=4 align=left><span style="font-size:18px">Final project for 6.7960, MIT</span></td>
+                  <td colspan=4 align=left><span style="font-size:18px">Final project for 6.7960 Fall 2025, MIT</span></td>
                 </tr>
             </table>
           </div>
@@ -222,7 +222,7 @@
           </div>
         </div>
         <div class="main-content-block">
-            <img src="./images/your_image_here.png" width=512px/>
+
         </div>
         <div class="margin-right-block">
             High-level schematic of our “LLM-as-jury” setup and analysis pipeline (judging, bias extraction, causal intervention, and probing).
@@ -238,9 +238,9 @@
 
             MT-Bench shows that LLM judges can approximate human preferences on average, but they also exhibit systematic biases toward superficial features such as answer position and verbosity <a href="#ref_2">[2]</a>. Recent work finds that these “LLM-as-a-judge” systems can be skewed by politeness, safety disclaimers, and other surface cues, and that debiasing is non-trivial <a href="#ref_3">[3]</a>, <a href="#ref_4">[4]</a>, <a href="#ref_5">[5]</a>. At the same time, probing studies suggest that many linguistic properties are linearly decodable from intermediate representations, while more abstract notions such as semantics or truth are harder to isolate <a href="#ref_6">[6]</a>.<br><br>
 
-            <div class="hypothesis">
-              <b>Hypothesis.</b> Stylistic biases (e.g., length, redundancy, sentiment, position) are encoded as low-dimensional directions that are easy to decode and causally intervene on, whereas correctness is represented in a more diffuse, non-linear way. As a result, we should be able to reliably remove some biases (e.g., position) via simple projections without hurting correctness, while other “biases” such as length are entangled with useful signal.
-            </div>
+
+              Our hypothesis is that stylistic biases (e.g., length, redundancy, sentiment, position) are encoded as low-dimensional directions that are easy to decode and causally intervene on, whereas correctness is represented in a more diffuse, non-linear way. As a result, we should be able to reliably remove some biases (e.g., position) via simple projections without hurting correctness, while other “biases” such as length are entangled with useful signal.
+
             <br>
 
             In this project we study a richer setting in which multiple open-source models act as judges on MT-Bench, forming an <i>LLM-as-jury</i>. We measure a broad suite of stylistic and semantic features (length, sentiment, redundancy, hedging, safety language, formality, etc.) and ask:
@@ -416,15 +416,8 @@
               our later result that stylistic biases are largely orthogonal to answer quality.
             </p>
 
-            <div style="text-align:center;">
-              <img src="./3ss.png" width="400px" />
-              <div style="font-size:14px; color:#555;">
-                <b>Figure 3.</b> Bias influence map: absolute correlation between each bias feature and human correctness.
-              </div>
-            </div>
-
             <p>
-              The bias influence map shows that all features are only weakly correlated with human correctness; even the largest effects
+              We find that all features are only weakly correlated with human correctness; even the largest effects
               (length, redundancy, novelty, unigram overlap) are on the order of 0.05–0.06. Hedging, safety language, formality, and
               pronoun usage are even less predictive. This supports our hypothesis that surface style is not a reliable signal of quality
               and should be treated as bias rather than a useful evaluation feature.
