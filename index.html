@@ -674,6 +674,77 @@ E_debias = E - dot.unsqueeze(-1) * v_b</pre>
   trivial artifact—it genuinely changes how answers are written, which may in turn influence LLM judges.
 </p>
 
+<p>
+  This KDE shows that most answers cluster around short-to-medium lengths with near-neutral sentiment,
+  and there is no strong nonlinear coupling between the two features. While length varies widely across
+  responses, sentiment stays tightly concentrated around zero, meaning it likely plays only a weak role
+  in influencing model preferences. This reinforces earlier findings that stylistic features tied to
+  verbosity matter more than emotional tone.
+</p>
+
+<div style="text-align:center;">
+  <img src="./7ss.png" width="400px" />
+  <div style="font-size:14px; color:#555;">
+    <b>Figure X.</b> Distribution of Δ log-likelihood (debiased − original) across three bias directions:
+    <i>length_tokens</i>, <i>position</i>, and <i>redundancy</i>. The dashed vertical line marks zero change.
+  </div>
+</div>
+
+<p>
+  This figure compares how strongly each bias direction shifts model preferences after debiasing.
+  <i>Position</i> shows consistently positive Δ log-likelihood, meaning removing positional bias tends to make
+  the correct answer more likely. In contrast, <i>length_tokens</i> produces mostly negative shifts, suggesting
+  that reducing verbosity-related preferences often hurts performance. <i>Redundancy</i> has a mixed but slightly
+  positive distribution, implying moderate recoverable bias. Overall, this plot highlights which biases are
+  “safe” to remove and which encode information the model is actually using.
+</p>
+
+<p>
+  This figure reveals that removing <i>position</i> bias reliably improves performance for both correct and incorrect cases,
+  while removing <i>length_tokens</i> sharply decreases log-likelihood—suggesting verbosity signals encode useful information the model relies on.
+  <i>Redundancy</i> shows mixed but mostly mild effects, with improvements primarily in examples originally misjudged.
+  Overall, the plot highlights which biases meaningfully distort judgments (position) and which are entangled with helpful cues (length).
+</p>
+
+<p> Across all targets, probes reveal that most bias-related features (e.g., formality, sentiment, redundancy, position, length) are recoverable from internal model representations with very high accuracy, often exceeding 0.9. In contrast, correctness is consistently difficult to linearly decode, remaining near 0.55–0.60 across layers. This gap suggests that the model strongly encodes stylistic and structural patterns while correctness remains a diffuse, non-linearly distributed property that does not localize cleanly in any single layer. </p>
+
+<p> Bias features become highly decodable very early—often by layers 2–6—where they plateau near perfect accuracy and remain stable across depth. This stability indicates that the model constructs style- and pattern-related features early and preserves them throughout processing. Correctness, by contrast, shows no such transition, reinforcing that it is not concentrated in a narrow representational subspace but emerges from more distributed interactions across layers. </p>
+
+<p> Most bias probes maintain high sparsity (≥80%), meaning that only a small subset of embedding dimensions is needed to decode them. This sparsity, paired with high accuracy, implies that these biases align with low-dimensional, highly structured directions encoded inside the embedding space. Correctness remains both low-accuracy and high-sparsity, further supporting the idea that it does not correspond to a single interpretable direction but is instead entangled across features. </p>
+
+<p> Similarity analyses (correlation matrices and PCA of probe profiles) show that many biases cluster together, forming a coherent family of easily decoded attributes. Novelty, overlap, redundancy, formality, and sentiment share highly correlated accuracy profiles. Correctness is an outlier, consistently isolated from all other targets in both PCA and correlation analyses. This separation highlights that correctness is represented fundamentally differently from stylistic biases and cannot be corrected simply by zeroing out a small number of directions. </p>
+
+<figure>
+    <img src="./8ss.png" alt="Probe accuracy across layers for key targets" style="width:90%;">
+    <figcaption><strong>Figure 5.</strong> Probe accuracy across layers for correctness and major bias features.</figcaption>
+</figure>
+
+<p>
+This figure shows that all bias features (length, position, redundancy, sentiment, formality) become highly linearly decodable by very early layers, reaching ~0.9–1.0 accuracy by layers 5–10. In contrast, correctness never becomes linearly decodable, hovering around ~0.55 across the entire network depth. This gap suggests that the model stores superficial stylistic signals in easily readable directions, while correctness is never explicitly represented as a simple feature. The consistent low decodability of correctness also reinforces that these biases act as stronger latent predictors for the model than actual answer quality.
+</p>
+
+<figure>
+    <img src="./9ss.png" alt="Correlation between targets' accuracy profiles over layers" style="width:90%;">
+    <figcaption><strong>Figure 6.</strong> Correlation heatmap showing similarity between targets’ layer-wise probe accuracy curves.</figcaption>
+</figure>
+
+<p>
+This heatmap shows that most bias features share highly similar layer-wise decodability patterns, forming a tight correlated cluster. Correctness stands out as the only feature with weak or negative correlations to many others, reinforcing that it behaves fundamentally differently from stylistic or structural biases. The block structure reveals that the model organizes many biases together—suggesting a shared representational substrate—while correctness lies outside this cluster. This supports the conclusion that biases are encoded as a coherent “style manifold,” whereas correctness is not directly embedded in any comparably simple direction.
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 		    </div>
 		    <div class="margin-right-block">
