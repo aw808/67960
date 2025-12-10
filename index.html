@@ -225,7 +225,7 @@
 
         </div>
         <div class="margin-right-block">
-            High-level schematic of our “LLM-as-jury” setup and analysis pipeline (judging, bias extraction, causal intervention, and probing).
+
         </div>
     </div>
 
@@ -234,26 +234,21 @@
         </div>
         <div class="main-content-block">
             <h1>Introduction</h1>
-            Modern deep learning systems increasingly rely on <i>LLM-as-judge</i> to evaluate generated text. Instead of asking humans to rate every answer, we delegate evaluation to another language model that scores or ranks candidate responses. This is attractive because it is scalable, cheap, and easy to integrate into training pipelines and benchmarks. However, it raises a central question: <b>what exactly are these judges rewarding, and how do those preferences arise inside the model?</b><br><br>
+            Modern deep learning systems increasingly rely on <i>LLM-as-judge</i> to evaluate generated text. Instead of asking humans to rate every answer, we delegate evaluation to another language model that scores or ranks candidate responses. This is useful because it is scalable, cheap, and easy to integrate into training pipelines and benchmarks. However, it raises a central question: what exactly are these judges rewarding, and how do those preferences arise inside the model?<br><br>
 
             MT-Bench shows that LLM judges can approximate human preferences on average, but they also exhibit systematic biases toward superficial features such as answer position and verbosity <a href="#ref_2">[2]</a>. Recent work finds that these “LLM-as-a-judge” systems can be skewed by politeness, safety disclaimers, and other surface cues, and that debiasing is non-trivial <a href="#ref_3">[3]</a>, <a href="#ref_4">[4]</a>, <a href="#ref_5">[5]</a>. At the same time, probing studies suggest that many linguistic properties are linearly decodable from intermediate representations, while more abstract notions such as semantics or truth are harder to isolate <a href="#ref_6">[6]</a>.<br><br>
 
 
-              Our hypothesis is that stylistic biases (e.g., length, redundancy, sentiment, position) are encoded as low-dimensional directions that are easy to decode and causally intervene on, whereas correctness is represented in a more diffuse, non-linear way. As a result, we should be able to reliably remove some biases (e.g., position) via simple projections without hurting correctness, while other “biases” such as length are entangled with useful signal.
+              Our hypothesis is that stylistic biases (e.g., length, redundancy, sentiment, position) are encoded as low-dimensional directions that are easy to decode and causally intervene on, whereas correctness is represented in a more diffuse, non-linear way. As a result, we should be able to reliably remove some biases, such as position, via simple projections without hurting correctness, while other “biases” such as length are entangled with useful signal.
 
             <br>
 
-            In this project we study a richer setting in which multiple open-source models act as judges on MT-Bench, forming an <i>LLM-as-jury</i>. We measure a broad suite of stylistic and semantic features (length, sentiment, redundancy, hedging, safety language, formality, etc.) and ask:
-            <ul>
-              <li>What biases arise when LLMs are used as judges, and how do they relate to each other?</li>
-              <li>Can we interpret these biases as directions in representation space and causally intervene on them?</li>
-              <li>At which layers of the network are correctness and bias signals encoded?</li>
-            </ul>
+            In this project we study a more complex setting in which multiple open-source models act as judges on MT-Bench, forming an <i>LLM-as-jury</i>. We measure a broad suite of stylistic and semantic features (length, sentiment, redundancy, hedging, safety language, formality, etc.) and explore what biases arise when LLMs are used as judges, and how do they relate to each other, how we can interpret these biases as directions in representation space and causally intervene on them, and at which layers of the network are correctness and bias signals encoded.
 
-            To answer these questions, we combine three ingredients: (1) a multi-judge evaluation protocol on MT-Bench; (2) a <b>causal intervention judge</b> that projects out gradient-defined bias directions in embedding space; and (3) <b>sparse probing</b> of hidden states across layers. Together, these results provide a small “grand unified picture” of how LLM judges make decisions and where their biases live in the network.
+            To answer these questions, we combine three parts: (1) a multi-judge evaluation protocol on MT-Bench; (2) a causal intervention judge that projects out gradient-defined bias directions in embedding space; and (3) sparse probing of hidden states across layers. Together, these results show how LLM judges make decisions and where their biases live in the network.
         </div>
         <div class="margin-right-block">
-            Margin note: We treat “bias” broadly as any systematic, non-task-essential preference (e.g., verbosity, redundancy, politeness) that can skew judgments away from human preferences even when the answers are semantically similar.
+            
         </div>
     </div>
 
@@ -262,7 +257,7 @@
         </div>
         <div class="main-content-block">
           <h1>Background and problem setup</h1>
-          MT-Bench evaluates LLMs via multi-turn questions and asks a judge model to decide which of two answers is better <a href="#ref_2">[2]</a>. Follow-up work has documented <b>position bias</b>, <b>verbosity bias</b>, and other systematic errors in LLM-based evaluation, and begun to analyze them with causal interventions and probing <a href="#ref_3">[3]</a>, <a href="#ref_4">[4]</a>, <a href="#ref_5">[5]</a>. However, these studies typically focus on a single judge model and a narrow set of biases, leaving open how multiple biases interact and where they are encoded.<br><br>
+          MT-Bench evaluates LLMs via multi-turn questions and asks a judge model to decide which of two answers is better <a href="#ref_2">[2]</a>. Follow-up work has documented position bias, verbosity bias, and other systematic errors in LLM-based evaluation, and begun to analyze them with causal interventions and probing <a href="#ref_3">[3]</a>, <a href="#ref_4">[4]</a>, <a href="#ref_5">[5]</a>. However, these studies typically focus on a single judge model and a narrow set of biases, leaving open how multiple biases interact and where they are encoded.<br><br>
 
           We view a judge as assigning a scalar score to each prompt–answer pair, which we operationalize as the log-likelihood of the answer conditioned on the conversation context.
           Intuitively, this score mixes (i) a component related to answer quality and alignment with human preferences, and (ii) components driven by surface-level features such as length, redundancy, formality, and sentiment. Our goal is to disentangle these parts.<br><br>
@@ -270,7 +265,7 @@
           We adopt a geometric view: each bias corresponds to a direction in representation space. If <i>h</i> denotes an input embedding and <i>v<sub>b</sub></i> a learned bias direction, we define a <b>debiased representation</b> by subtracting the projection of <i>h</i> onto <i>v<sub>b</sub></i>. Recomputing log-likelihoods from this debiased embedding allows us to estimate how much of the judge’s behavior is causally attributable to that bias direction. We then compare these causal effects with what we can decode from hidden states using sparse probes.
         </div>
         <div class="margin-right-block" style="transform: translate(0%, -100%);">
-          Margin note: Prior work largely treats bias as a descriptive property of outputs; here we treat it as an internal direction that can be intervened on without retraining the model.
+ 
         </div>
     </div>
 
@@ -518,11 +513,11 @@
             <h1>Conclusion</h1>
             Our analysis suggests that LLM-based judges are not monolithic “oracles,” but systems whose preferences can be decomposed into
             interpretable bias dimensions and manipulated via simple linear interventions. Multi-model ensembles (“LLM-as-jury”) smooth out
-            some idiosyncratic biases of individual judges, especially extreme position and verbosity preferences, but they do not fully
+            some certain biases of individual judges, especially extreme position and verbosity preferences, but they do not fully
             eliminate systematic tendencies toward redundancy, politeness, and prompt-copying.<br><br>
 
             Causal interventions show that some biases, notably position, can be projected out with clear benefits to alignment with human
-            judgments, while others such as length encode genuinely useful cues and are dangerous to suppress wholesale. Probing results
+            judgments, while others such as length encode genuinely useful cues and are dangerous to suppress completely. Probing results
             complement this picture: stylistic and structural features are highly linearly decodable from early layers, forming a compact
             “style manifold,” whereas correctness remains diffuse and never becomes an easily accessible feature. This structural mismatch
             explains why naive reliance on judge scores risks baking shallow biases into training loops, leaderboards, and deployment
