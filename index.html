@@ -5,220 +5,213 @@
 
 <link rel="shortcut icon" href="images/icon.ico">
 <style type="text/css">
-	body {
-		background-color: #f5f9ff;
-	}
+  body {
+    background-color: #f5f9ff;
+  }
 
-	/* Hide both math displays initially, will display based on JS detection */
   .mathjax-mobile, .mathml-non-mobile { display: none; }
-
-  /* Show the MathML content by default on non-mobile devices */
   .show-mathml .mathml-non-mobile { display: block; }
   .show-mathjax .mathjax-mobile { display: block; }
 
-	.content-margin-container {
-		display: flex;
-		width: 100%; /* Ensure the container is full width */
-		justify-content: left; /* Horizontally centers the children in the container */
-		align-items: center;  /* Vertically centers the children in the container */
-	}
-	.main-content-block {
-		width: 70%; /* Change this percentage as needed */
-    max-width: 1100px; /* Optional: Maximum width */
-		background-color: #fff;
-		border-left: 1px solid #DDD;
-		border-right: 1px solid #DDD;
-		padding: 8px 8px 8px 8px;
-		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;#"Avenir";
-	}
-	.margin-left-block {
-			font-size: 14px;
-			width: 15%; /* Change this percentage as needed */
-			max-width: 130px; /* Optional: Maximum width */
-			position: relative;
-			margin-left: 10px;
-			text-align: left;
-			font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;#"Avenir";
-			padding: 5px;
-	}
-	.margin-right-block {
-			font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;#"Avenir";
-			font-size: 14px;
-			width: 25%; /* Change this percentage as needed */
-			max-width: 256px; /* Optional: Maximum width */
-			position: relative;
-			text-align: left;
-			padding: 10px;  /* Optional: Adds padding inside the caption */
-	}
+  .content-margin-container {
+    display: flex;
+    width: 100%;
+    justify-content: left;
+    align-items: center;
+  }
+  .main-content-block {
+    width: 70%;
+    max-width: 1100px;
+    background-color: #fff;
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+    padding: 8px 8px 8px 8px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  }
+  .margin-left-block {
+      font-size: 14px;
+      width: 15%;
+      max-width: 130px;
+      position: relative;
+      margin-left: 10px;
+      text-align: left;
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      padding: 5px;
+  }
+  .margin-right-block {
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      font-size: 14px;
+      width: 25%;
+      max-width: 256px;
+      position: relative;
+      text-align: left;
+      padding: 10px;
+  }
 
-	img {
-			max-width: 100%; /* Make sure it fits inside the container */
-			height: auto;
-			display: block;
-			margin: auto;
-	}
-	.my-video {
-			max-width: 100%; /* Make sure it fits inside the container */
-			height: auto;
-			display: block;
-			margin: auto;
-	}
-	/* Hide both video displays initially, will display based on JS detection */
+  img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: auto;
+  }
+  .my-video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: auto;
+  }
+
   .vid-mobile, .vid-non-mobile { display: none; }
-
-  /* Show the video content by default on non-mobile devices */
   .show-vid-mobile .vid-mobile { display: block; }
   .show-vid-non-mobile .vid-non-mobile { display: block; }
 
-	a:link,a:visited
-	{
-		color: #0e7862; /*#1367a7;*/
-		text-decoration: none;
-	}
-	a:hover {
-		color: #24b597; /*#208799;*/
-	}
+  a:link,a:visited {
+    color: #0e7862;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #24b597;
+  }
 
-	h1 {
-		font-size: 18px;
-		margin-top: 4px;
-		margin-bottom: 10px;
-	}
+  h1 {
+    font-size: 18px;
+    margin-top: 4px;
+    margin-bottom: 10px;
+  }
 
-	table.header {
+  table.header {
     font-weight: 300;
     font-size: 17px;
     flex-grow: 1;
-		width: 70%;
-    max-width: calc(100% - 290px); /* Adjust according to the width of .paper-code-tab */
-	}
-	table td, table td * {
-	    vertical-align: middle;
-	    position: relative;
-	}
-	table.paper-code-tab {
-	    flex-shrink: 0;
-	    margin-left: 8px;
-	    margin-top: 8px;
-	    padding: 0px 0px 0px 8px;
-	    width: 290px;
-	    height: 150px;
-	}
-
-	.layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
-		box-shadow:
-		        0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
-		        5px 5px 0 0px #fff, /* The second layer */
-		        5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
-		        10px 10px 0 0px #fff, /* The third layer */
-		        10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
-		margin-top: 5px;
-		margin-left: 10px;
-		margin-right: 30px;
-		margin-bottom: 5px;
-	}
-
-	hr {
-    height: 1px; /* Sets the height of the line to 1 pixel */
-    border: none; /* Removes the default border */
-    background-color: #DDD; /* Sets the line color to black */
+    width: 70%;
+    max-width: calc(100% - 290px);
+  }
+  table td, table td * {
+      vertical-align: middle;
+      position: relative;
+  }
+  table.paper-code-tab {
+      flex-shrink: 0;
+      margin-left: 8px;
+      margin-top: 8px;
+      padding: 0px 0px 0px 8px;
+      width: 290px;
+      height: 150px;
   }
 
-	div.hypothesis {
-		width: 80%;
-		background-color: #EEE;
-		border: 1px solid black;
-		border-radius: 10px;
-		-moz-border-radius: 10px;
-		-webkit-border-radius: 10px;
-		font-family: Courier;
-		font-size: 18px;
-		text-align: center;
-		margin: auto;
-		padding: 16px 16px 16px 16px;
-	}
+  .layered-paper {
+    box-shadow:
+          0px 0px 1px 1px rgba(0,0,0,0.35),
+          5px 5px 0 0px #fff,
+          5px 5px 1px 1px rgba(0,0,0,0.35),
+          10px 10px 0 0px #fff,
+          10px 10px 1px 1px rgba(0,0,0,0.35);
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 30px;
+    margin-bottom: 5px;
+  }
 
-	div.citation {
+  hr {
+    height: 1px;
+    border: none;
+    background-color: #DDD;
+  }
+
+  div.hypothesis {
+    width: 80%;
+    background-color: #EEE;
+    border: 1px solid black;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    font-family: Courier;
+    font-size: 16px;
+    text-align: center;
+    margin: auto;
+    padding: 12px 16px 12px 16px;
+  }
+
+  div.citation {
     font-size: 0.8em;
     background-color:#fff;
     padding: 10px;
-		height: 200px;
+    height: 200px;
   }
 
-	.fade-in-inline {
-		position: absolute;
-		text-align: center;
-		margin: auto;
-		-webkit-mask-image: linear-gradient(to right,
-																			transparent 0%,
-																			transparent 40%,
-																			black 50%,
-																			black 90%,
-																			transparent 100%);
-		mask-image: linear-gradient(to right,
-																transparent 0%,
-																transparent 40%,
-																black 50%,
-																black 90%,
-																transparent 100%);
-		-webkit-mask-size: 8000% 100%;
-		mask-size: 8000% 100%;
-		animation-name: sweepMask;
-		animation-duration: 4s;
-		animation-iteration-count: infinite;
-		animation-timing-function: linear;
-		animation-delay: -1s;
-	}
+  .fade-in-inline {
+    position: absolute;
+    text-align: center;
+    margin: auto;
+    -webkit-mask-image: linear-gradient(to right,
+                                      transparent 0%,
+                                      transparent 40%,
+                                      black 50%,
+                                      black 90%,
+                                      transparent 100%);
+    mask-image: linear-gradient(to right,
+                                transparent 0%,
+                                transparent 40%,
+                                black 50%,
+                                black 90%,
+                                transparent 100%);
+    -webkit-mask-size: 8000% 100%;
+    mask-size: 8000% 100%;
+    animation-name: sweepMask;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay: -1s;
+  }
 
-	.fade-in2-inline {
-			animation-delay: 1s;
-	}
+  .fade-in2-inline {
+      animation-delay: 1s;
+  }
 
-	.inline-div {
-			position: relative;
-	    display: inline-block; /* Makes both the div and paragraph inline-block elements */
-	    vertical-align: top; /* Aligns them at the top, you can adjust this to middle, bottom, etc., based on your needs */
-	    width: 50px; /* Optional: Adds space between the div and the paragraph */
-	}
+  .inline-div {
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+      width: 50px;
+  }
 
 </style>
 
-	  <title>The Platonic Representation Hypothesis</title>
+    <title>The Platonic Representation Hypothesis</title>
       <meta property="og:title" content="The Platonic Representation Hypothesis" />
-			<meta charset="UTF-8">
+      <meta charset="UTF-8">
   </head>
 
   <body>
 
-		<div class="content-margin-container">
-				<div class="margin-left-block">
-				</div>
-		    <div class="main-content-block">
-						<table class="header" align=left>
-								<tr>
-									<td colspan=4>
-										<span style="font-size: 32px; font-family: 'Courier New', Courier, monospace; /* Adds fallbacks */">A Grand Unified Theory of Deep Learning</span>
-									</td>
-								</tr>
-								<tr>
-										<td align=left>
-												<span style="font-size:17px"><a href="your_website">Your name</a></span>
-										</td>
-										<td align=left>
-												<span style="font-size:17px"><a href="your_partner's_website">Your partner's name</a></span>
-										</td>
-								<tr>
-									<td colspan=4 align=left><span style="font-size:18px">Final project for 6.7960, MIT</span></td>
-								</tr>
-						</table>
-					</div>
-					<div class="margin-right-block">
-					</div>
-		</div>
+    <div class="content-margin-container">
+        <div class="margin-left-block">
+        </div>
+        <div class="main-content-block">
+            <table class="header" align=left>
+                <tr>
+                  <td colspan=4>
+                    <span style="font-size: 32px; font-family: 'Courier New', Courier, monospace;">A Grand Unified Theory of Deep Learning</span>
+                  </td>
+                </tr>
+                <tr>
+                    <td align=left>
+                        <span style="font-size:17px"><a href="your_website">Your name</a></span>
+                    </td>
+                    <td align=left>
+                        <span style="font-size:17px"><a href="your_partner's_website">Your partner's name</a></span>
+                    </td>
+                <tr>
+                  <td colspan=4 align=left><span style="font-size:18px">Final project for 6.7960, MIT</span></td>
+                </tr>
+            </table>
+          </div>
+          <div class="margin-right-block">
+          </div>
+    </div>
 
-		<div class="content-margin-container" id="intro">
-				<div class="margin-left-block">
-          <!-- table of contents here -->
+    <div class="content-margin-container" id="intro">
+        <div class="margin-left-block">
           <div style="position:fixed; max-width:inherit; top:max(20%,120px)">
               <b style="font-size:16px">Outline</b><br><br>
               <a href="#intro">Introduction</a><br><br>
@@ -227,166 +220,77 @@
               <a href="#results">Results &amp; Discussion</a><br><br>
               <a href="#conclusion">Conclusion</a><br><br>
           </div>
-				</div>
-		    <div class="main-content-block">
-            <!--You can embed an image like this:-->
+        </div>
+        <div class="main-content-block">
             <img src="./images/your_image_here.png" width=512px/>
-		    </div>
-		    <div class="margin-right-block">
-						High-level schematic of our “LLM-as-jury” setup and analysis pipeline (judging, bias extraction, causal intervention, and probing).
-		    </div>
-		</div>
+        </div>
+        <div class="margin-right-block">
+            High-level schematic of our “LLM-as-jury” setup and analysis pipeline (judging, bias extraction, causal intervention, and probing).
+        </div>
+    </div>
 
     <div class="content-margin-container" id="intro">
-				<div class="margin-left-block">
-				</div>
-		    <div class="main-content-block">
-						<h1>Introduction</h1>
-            Modern deep learning systems increasingly rely on <i>LLM-as-judge</i> to evaluate generated text. Instead of asking humans to rate every answer, we delegate evaluation to another language model that scores or ranks candidate responses. This is attractive because it is scalable, cheap, and easy to integrate into training pipelines and benchmarks. However, it raises a central question: <b>what biases do these judges have, and how do those biases arise inside the model?</b><br><br>
+        <div class="margin-left-block">
+        </div>
+        <div class="main-content-block">
+            <h1>Introduction</h1>
+            Modern deep learning systems increasingly rely on <i>LLM-as-judge</i> to evaluate generated text. Instead of asking humans to rate every answer, we delegate evaluation to another language model that scores or ranks candidate responses. This is attractive because it is scalable, cheap, and easy to integrate into training pipelines and benchmarks. However, it raises a central question: <b>what exactly are these judges rewarding, and how do those preferences arise inside the model?</b><br><br>
 
-            MT-Bench and follow-up work show that LLM judges can approximate human preferences on average, but they also exhibit systematic biases toward certain surface features such as verbosity and answer position. Existing analyses typically study a single judge model and a small set of bias dimensions, leaving open three key gaps:
-            <ul>
-              <li>We lack a <b>holistic, multi-bias view</b> of LLM judgment behavior.</li>
-              <li>We do not understand <b>where in the network</b> these biases are encoded.</li>
-              <li>We lack <b>causal tools</b> to remove bias from the judge without retraining it.</li>
-            </ul>
+            MT-Bench shows that LLM judges can approximate human preferences on average, but they also exhibit systematic biases toward superficial features such as answer position and verbosity <a href="#ref_2">[2]</a>. Recent work finds that these “LLM-as-a-judge” systems can be skewed by politeness, safety disclaimers, and other surface cues, and that debiasing is non-trivial <a href="#ref_3">[3]</a>, <a href="#ref_4">[4]</a>, <a href="#ref_5">[5]</a>. At the same time, probing studies suggest that many linguistic properties are linearly decodable from intermediate representations, while more abstract notions such as semantics or truth are harder to isolate <a href="#ref_6">[6]</a>.<br><br>
+
+            <div class="hypothesis">
+              <b>Hypothesis.</b> Stylistic biases (e.g., length, redundancy, sentiment, position) are encoded as low-dimensional directions that are easy to decode and causally intervene on, whereas correctness is represented in a more diffuse, non-linear way. As a result, we should be able to reliably remove some biases (e.g., position) via simple projections without hurting correctness, while other “biases” such as length are entangled with useful signal.
+            </div>
+            <br>
 
             In this project we study a richer setting in which multiple open-source models act as judges on MT-Bench, forming an <i>LLM-as-jury</i>. We measure a broad suite of stylistic and semantic features (length, sentiment, redundancy, hedging, safety language, formality, etc.) and ask:
             <ul>
-              <li>What biases arise when LLMs are used as judges, and how do they differ across models?</li>
+              <li>What biases arise when LLMs are used as judges, and how do they relate to each other?</li>
               <li>Can we interpret these biases as directions in representation space and causally intervene on them?</li>
               <li>At which layers of the network are correctness and bias signals encoded?</li>
             </ul>
 
-            To answer these questions, we combine three ingredients: (1) a multi-judge evaluation protocol on MT-Bench; (2) a <b>causal intervention judge</b> that projects out gradient-defined bias directions in embedding space; and (3) <b>sparse probing</b> of hidden states across layers. Together, these results provide a small “grand unified theory” of how LLM judges make decisions and where their biases live in the network.
-		    </div>
-		    <div class="margin-right-block">
-						Margin note: We treat “bias” broadly as any systematic, non-task-essential preference (e.g., verbosity, redundancy, politeness) that can skew judgments away from human preferences even when the answer is semantically similar.
-		    </div>
-		</div>
+            To answer these questions, we combine three ingredients: (1) a multi-judge evaluation protocol on MT-Bench; (2) a <b>causal intervention judge</b> that projects out gradient-defined bias directions in embedding space; and (3) <b>sparse probing</b> of hidden states across layers. Together, these results provide a small “grand unified picture” of how LLM judges make decisions and where their biases live in the network.
+        </div>
+        <div class="margin-right-block">
+            Margin note: We treat “bias” broadly as any systematic, non-task-essential preference (e.g., verbosity, redundancy, politeness) that can skew judgments away from human preferences even when the answers are semantically similar.
+        </div>
+    </div>
 
-		<div class="content-margin-container" id="does_x_do_y">
-				<div class="margin-left-block">
-				</div>
-		    <div class="main-content-block">
-					<h1>Background and problem setup</h1>
-				  MT-Bench evaluates LLMs via multi-turn questions and asks a judge model (e.g., GPT-4) to decide which of two answers is better <a href="#ref_2">[2]</a>. Subsequent work has shown that such judges exhibit <b>position bias</b> (preferring the answer in a fixed slot) and <b>verbosity bias</b> (preferring longer outputs), and that these patterns can sometimes be traced to internal representations via probing <a href="#ref_3">[3]</a>. However, existing studies typically:<br><br>
+    <div class="content-margin-container" id="does_x_do_y">
+        <div class="margin-left-block">
+        </div>
+        <div class="main-content-block">
+          <h1>Background and problem setup</h1>
+          MT-Bench evaluates LLMs via multi-turn questions and asks a judge model to decide which of two answers is better <a href="#ref_2">[2]</a>. Follow-up work has documented <b>position bias</b>, <b>verbosity bias</b>, and other systematic errors in LLM-based evaluation, and begun to analyze them with causal interventions and probing <a href="#ref_3">[3]</a>, <a href="#ref_4">[4]</a>, <a href="#ref_5">[5]</a>. However, these studies typically focus on a single judge model and a narrow set of biases, leaving open how multiple biases interact and where they are encoded.<br><br>
 
-          <ul>
-            <li>Use a <b>single closed-source judge</b> rather than a panel of heterogeneous models.</li>
-            <li>Focus on a <b>small set of biases</b> (position, length) while ignoring others like hedging or redundancy.</li>
-            <li>Do not provide a <b>causal mechanism</b> for mitigation—probing shows what is decodable, not what drives behavior.</li>
-          </ul>
+          We view a judge as assigning a scalar score to each prompt–answer pair, which we operationalize as the log-likelihood of the answer conditioned on the conversation context.
+          Intuitively, this score mixes (i) a component related to answer quality and alignment with human preferences, and (ii) components driven by surface-level features such as length, redundancy, formality, and sentiment. Our goal is to disentangle these parts.<br><br>
 
-          We formalize the judge as assigning a scalar score to each prompt–answer pair:
-          <br><br>
-          <center>
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-              <mrow>
-                <mi>s</mi>
-                <mo>=</mo>
-                <mi>f</mi>
-                <mo stretchy="false">(</mo>
-                  <mi>x</mi>
-                  <mo>,</mo>
-                  <mi>y</mi>
-                <mo stretchy="false">)</mo>
-              </mrow>
-            </math>
-          </center>
-          <br>
-          where <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math> is the prompt and <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi></math> is a candidate answer. In our experiments, we approximate this with the log-likelihood under a judge LLM:
-          <br><br>
-          <center>
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-              <mrow>
-                <mi>&#x2113;</mi>
-                <mo stretchy="false">(</mo>
-                  <mi>x</mi>
-                  <mo>,</mo>
-                  <mi>y</mi>
-                <mo stretchy="false">)</mo>
-                <mo>=</mo>
-                <munder>
-                  <mo>&#x2211;</mo>
-                  <mi>t</mi>
-                </munder>
-                <mrow>
-                  <mi>log</mi>
-                  <mo>&#x2061;</mo>
-                </mrow>
-                <mi>p</mi>
-                <mo stretchy="false">(</mo>
-                  <msub><mi>y</mi><mi>t</mi></msub>
-                  <mo>&#x2223;</mo>
-                  <msub><mi>y</mi>
-                    <mrow>
-                      <mo>&lt;</mo><mi>t</mi>
-                    </mrow>
-                  </msub>
-                  <mo>,</mo>
-                  <mi>x</mi>
-                <mo stretchy="false">)</mo>
-              </mrow>
-            </math>
-          </center>
-          <br>
-          Our goal is to disentangle the component of this score that reflects “true” semantic quality (alignment with human labels) from components driven by bias features. To do this, we adopt a geometric view: we hypothesize that each bias corresponds to a direction in representation space. If <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>h</mi></math> denotes an input embedding and <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>v</mi><mi>b</mi></msub></math> a learned bias direction, we define a <b>debiased representation</b>:
-          <br><br>
-          <center>
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-              <mrow>
-                <msup><mi>h</mi><mo>&#x2032;</mo></msup>
-                <mo>=</mo>
-                <mi>h</mi>
-                <mo>&#x2212;</mo>
-                <mo stretchy="false">(</mo>
-                  <msup><mi>h</mi><mi>T</mi></msup>
-                  <msub><mi>v</mi><mi>b</mi></msub>
-                <mo stretchy="false">)</mo>
-                <msub><mi>v</mi><mi>b</mi></msub>
-              </mrow>
-            </math>
-          </center>
-          <br>
-          Recomputing the log-likelihood with <math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>h</mi><mo>&#x2032;</mo></msup></math> lets us quantify how much of the judge’s behavior is causally attributable to that bias direction. If the winner frequently changes when we project out a verbosity direction but not when we project out a correctness-correlated direction, then the judge is clearly over-relying on length as a decision signal.
-		    </div>
-		    <div class="margin-right-block" style="transform: translate(0%, -100%);">
+          We adopt a geometric view: each bias corresponds to a direction in representation space. If <i>h</i> denotes an input embedding and <i>v<sub>b</sub></i> a learned bias direction, we define a <b>debiased representation</b> by subtracting the projection of <i>h</i> onto <i>v<sub>b</sub></i>. Recomputing log-likelihoods from this debiased embedding allows us to estimate how much of the judge’s behavior is causally attributable to that bias direction. We then compare these causal effects with what we can decode from hidden states using sparse probes.
+        </div>
+        <div class="margin-right-block" style="transform: translate(0%, -100%);">
           Margin note: Prior work largely treats bias as a descriptive property of outputs; here we treat it as an internal direction that can be intervened on without retraining the model.
-		    </div>
-		</div>
+        </div>
+    </div>
 
-		<div class="content-margin-container" id="methods">
-				<div class="margin-left-block">
-				</div>
-		    <div class="main-content-block">
-            <h1>Methods and experiments</h1>
-Our pipeline has three main parts. First, we build an LLM-as-Jury judge: four models (Llama, Qwen, Mistral, Phi) independently score every MT-Bench answer pair, and we combine their votes using averages, majorities, and parameter-weighted scoring. Second, we compute a broad set of bias features for every answer—things like verbosity, sentiment, hedging, safety disclaimers, overlap with the prompt, etc.—so we can see which surface features might be influencing the judges. Third, we run two deeper analyses: sparse probing, which checks which layers of an LLM encode each bias vs. actual correctness, and causal interventions, where we estimate a direction in embedding space corresponding to a bias and project it out to see how the judge’s behavior changes. Together these steps give us a full picture of what biases exist, where they come from, and how much they actually affect scoring.
+    <div class="content-margin-container" id="methods">
+  <div class="margin-left-block"></div>
 
-            <h2>Building the evaluation dataset</h2>
-            We begin from the MT-Bench human-judgment release. Using the provided JSONL file of questions and the <code>gpt4_pair</code> / human judgment Parquet files, we construct a tabular dataset of pairwise comparisons:
-            <ol>
-              <li><b>Conversation parsing.</b> For each <code>question_id</code> we read <code>conversation_a</code> and <code>conversation_b</code> as lists of <code>{"role","content"}</code> turns. We serialize the full dialogue as a “prompt context” string:
-                <pre>USER: ...
-ASSISTANT: ...
-USER: ...</pre>
-                and extract the final assistant turn as the answer for that model.</li>
-              <li><b>Pair table.</b> We build <code>mt_bench_for_manual_llm_judges_human.csv</code> with columns
-                <code>question_id</code>, <code>prompt_context</code>, <code>answer_a</code>, <code>answer_b</code>, <code>model_a</code>, <code>model_b</code>, and <code>human_winner_raw</code> (the original “model_a/model_b/tie” label).</li>
-            </ol>
-            This CSV is the starting point for all of our LLM-judge experiments.
+  <div class="main-content-block">
+    <h1>Methods and experiments</h1>
 
-            <h2>Local multi-judge scoring with Ollama</h2>
-            To obtain a diverse set of judges, we run four open-source models locally through Ollama:
-            <ul>
-              <li><code>phi3:3.8b</code> (prefix <code>phi</code>)</li>
-              <li><code>llama3.1:8b</code> (prefix <code>llama</code>)</li>
-              <li><code>mistral:7b</code> (prefix <code>mistral</code>)</li>
-              <li><code>qwen2.5:7b</code> (prefix <code>qwen</code>)</li>
-            </ul>
+    Our experimental pipeline has three main components. First, we construct an LLM-as-Jury setup in which four open-source models (LLaMA-3.1-8B, Qwen-2.5-7B, Mistral-7B, and Phi-3-3.8B) independently judge every MT-Bench answer pair using a unified scoring prompt. Their outputs populate a shared table that we later aggregate into several meta-judge strategies. Second, we compute a large suite of stylistic and semantic bias features for every answer, enabling descriptive and correlation-based analyses. Finally, we perform two deeper diagnostic experiments: (1) causal interventions, where we estimate gradient-based directions encoding particular biases and project them out of the embedding space; and (2) sparse probing across all transformer layers to examine where correctness and bias signals reside.
 
-            For each row in <code>mt_bench_for_manual_llm_judges_human.csv</code> we construct a user message
-            <pre>[PROMPT CONTEXT]
+    <h2>Building the evaluation dataset</h2>
+
+    We start from the MT-Bench human-judgment release. From the provided JSONL files we extract full prompt–answer conversations for each question_id, serialize them into a single prompt-context string, and record the final assistant message from each model as its answer. We store these in a table (`mt_bench_for_manual_llm_judges_human.csv`) containing prompt_context, answer_a, answer_b, model identities, and the raw human winner (A/B/tie). This table forms the basis of all subsequent judgment and analysis steps.
+
+    <h2>Local multi-judge scoring with Ollama</h2>
+
+    To populate judgments for all answer pairs, each of the four models is run locally through Ollama. For each row in the dataset, we send:
+
+<pre>[PROMPT CONTEXT]
 {prompt_context}
 
 [ANSWER A]
@@ -394,396 +298,273 @@ USER: ...</pre>
 
 [ANSWER B]
 {answer_b}</pre>
-            and send it to <code>/api/chat</code> together with a shared <code>JUDGE_SYSTEM_PROMPT</code> that:
-            <ul>
-              <li>Asks the model to output <code>score_a</code>, <code>score_b</code> ∈ {1,…,10} and a categorical <code>winner</code> ∈ {<code>"A"</code>,<code>"B"</code>}.</li>
-              <li>Disallows ties.</li>
-              <li>Requires a single JSON object and no surrounding commentary.</li>
-            </ul>
 
-            Because models sometimes return JSON wrapped in code fences or additional explanation, we implement a robust post-processor:
-            <ul>
-              <li><code>extract_json_object</code> strips <code>```json</code> fences and slices from the first <code>'{'</code> to the last <code>'}'</code>.</li>
-              <li>If JSON parsing still fails, we fall back to a neutral decision (scores 5–5, winner A) to avoid crashing long runs.</li>
-            </ul>
+    together with a shared system prompt instructing the model to output integer scores (1–10) for A and B and a categorical winner (“A” or “B”), with ties disallowed.
 
-            We loop over judge models one at a time. For each prefix we create three new columns in the CSV—
-            <code>{prefix}_score_a</code>, <code>{prefix}_score_b</code>, <code>{prefix}_winner</code>—and fill them for every question–pair. We skip rows that already contain values (allowing interrupted runs to resume), and periodically save an updated <code>mt_bench_with_phi_llama_mistral_qwen.csv</code> plus a Parquet copy.
+    Model outputs frequently include code fences or extraneous text, so we implement a robust `extract_json_object` routine that strips formatting and extracts the substring between the first '{' and final '}'. If JSON still fails to parse, we fallback to a neutral placeholder (5–5, winner=A) to preserve pipeline stability.
 
-            <h2>Meta-judges: single model vs. LLM-as-jury</h2>
-            From the filled CSV, we build answer-level examples and four different “meta-judge” strategies.
+    Each model is run independently. For every prefix (llama, qwen, mistral, phi) we create `{prefix}_score_a`, `{prefix}_score_b`, and `{prefix}_winner`, skipping any row already filled from a prior run. We periodically write updated CSV and Parquet files (`mt_bench_with_phi_llama_mistral_qwen.*`).
 
-            <b>Answer-level expansion.</b> For each pair (A,B) we:
-            <ul>
-              <li>Normalize the human label <code>human_winner_raw</code> into {A,B,tie} via <code>normalize_human_winner</code>.</li>
-              <li>Assign <code>correct_label = 1</code> to the answer that matches the human winner and <code>0</code> to the other; ties give <code>0</code> to both.</li>
-              <li>Create two examples:
-                <ul>
-                  <li>A-example with <code>position = 0</code>, <code>answer = answer_a</code></li>
-                  <li>B-example with <code>position = 1</code>, <code>answer = answer_b</code></li>
-                </ul>
-              </li>
-            </ul>
+    <h2>Meta-judges: single-model vs ensemble scoring</h2>
 
-            For each pair we then define four meta-judges:
-            <ul>
-              <li><b>Single-LLM judge.</b> We pick LLaMA-3.1 8B as the primary judge (<code>PRIMARY_JUDGE = "llama"</code>) and copy
-                <code>llama_score_a/b</code>, <code>llama_winner</code> into <code>single_llm_score_a/b</code>, <code>single_llm_winner</code>.</li>
+    After all judge outputs are collected, we expand each A/B comparison into two answer-level examples: the A answer at position=0 and the B answer at position=1. We convert the human winner into a binary correctness label for each answer (ties give 0 to both). On top of this expanded dataset we define four judge strategies:
 
-              <li><b>Unweighted average.</b> We take the mean scores across all four judges:
-                <pre>avg_score_a = mean_j llama/qwen/phi/mistral score_a
-avg_score_b = mean_j llama/qwen/phi/mistral score_b</pre>
-                and define <code>avg_winner</code> as the argmax (ties broken toward A).</li>
+    <ul>
+      <li>Single-LLM: use only the LLaMA-3.1-8B scores and winner.</li>
+      <li>Unweighted average: average the four models’ numeric scores and select the higher-scoring answer.</li>
+      <li>Majority vote: take the mode of the four per-model winners.</li>
+      <li>Parameter-weighted average: compute a weighted mean of scores using model size as a proxy for reliability (e.g., 8.0 for LLaMA, 7.0 for Qwen and Mistral, 3.8 for Phi).</li>
+    </ul>
 
-              <li><b>Majority vote.</b> We collect the per-model winners and define <code>majority_winner</code> as the mode of the votes, defaulting to A if all models are missing.</li>
+    Each strategy yields its own predicted winner for every pair. These expanded rows—with human labels, judge predictions, and all bias features—are saved as `examples_with_biases.csv`. We then assess the agreement of each judge with human preference and analyze accuracy as a function of bias intensity.
 
-              <li><b>Parameter-weighted average.</b> We assign weights
-                <code>w_llama = 8.0</code>, <code>w_qwen = 7.0</code>, <code>w_mistral = 7.0</code>, <code>w_phi = 3.8</code>, compute
-                <pre>wavg_score_a = (Σ_j w_j score_a_j) / Σ_j w_j
-wavg_score_b = (Σ_j w_j score_b_j) / Σ_j w_j</pre>
-                and set <code>wavg_winner</code> to the higher weighted score.</li>
-            </ul>
+    <h2>Bias feature extraction</h2>
 
-            The answer-level examples (with human correctness labels, meta-judge winners, and features below) are saved as <code>examples_with_biases.csv</code>. In our experiments we:
-            <ul>
-              <li>Measure <b>agreement</b> between each meta-judge and humans (fraction of pairs where the judge picks the human-preferred answer).</li>
-              <li>Condition this accuracy on bias deciles (e.g., high vs. low verbosity, high redundancy) to see where each strategy fails.</li>
-            </ul>
+    For every answer we compute a dictionary of features using `compute_bias_features`. These include:
 
-            <h2>Bias feature extraction and descriptive analysis</h2>
-            For each answer we attach a dictionary <code>bias_features</code> computed by <code>compute_bias_features</code>. Concretely:
-            <ul>
-              <li><b>Position and length:</b> <code>position</code> (0 = A, 1 = B), <code>length_chars</code>, <code>length_tokens</code>, and <code>verbosity</code> (alias of token count).</li>
-              <li><b>Digits and symbols:</b> <code>num_digits</code> (count of <code>.isdigit()</code> characters) and <code>num_symbols</code> (characters in a fixed symbol set).</li>
-              <li><b>Sentiment:</b> A lexicon-based score
-                <br><br>
-                <center>
-                  <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                      <mi>sentiment</mi>
-                      <mo>=</mo>
-                      <mfrac>
-                        <mrow>
-                          <mi>count</mi><mo>(</mo><mi>positive\_phrases</mi><mo>)</mo>
-                          <mo>&#x2212;</mo>
-                          <mi>count</mi><mo>(</mo><mi>negative\_phrases</mi><mo>)</mo>
-                        </mrow>
-                        <mrow>
-                          <mi>#tokens</mi>
-                        </mrow>
-                      </mfrac>
-                    </mrow>
-                  </math>
-                </center>
-                <br>
-                where the phrase lists include generic and travel-style expressions (e.g., “great value”, “not worth it”).</li>
-              <li><b>Hedging and safety:</b> we count matches against curated <code>hedge_phrases</code> and <code>safety_phrases</code> lists (e.g., “I think”, “as an AI”, “I cannot provide legal advice”) and normalize by token count to obtain <code>hedge_density</code>, <code>safety_density</code>.</li>
-              <li><b>Formality and pronouns:</b> we compute <code>pronoun_density</code> and <code>contraction_density</code>; we then mark an answer as <code>formality = 1</code> if it is long and uses few pronouns or contractions.</li>
-              <li><b>Redundancy vs. novelty:</b> we compute unigram and bigram Jaccard overlap between <code>prompt</code> and <code>answer</code>:
-                <br><br>
-                <center>
-                  <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mrow>
-                      <mi>overlap</mi>
-                      <mo>=</mo>
-                      <mfrac>
-                        <mrow>
-                          <mo>|</mo>
-                          <mi>ngrams</mi><mo>(</mo><mi>prompt</mi><mo>)</mo>
-                          <mo>&#x2229;</mo>
-                          <mi>ngrams</mi><mo>(</mo><mi>answer</mi><mo>)</mo>
-                          <mo>|</mo>
-                        </mrow>
-                        <mrow>
-                          <mo>|</mo>
-                          <mi>ngrams</mi><mo>(</mo><mi>prompt</mi><mo>)</mo>
-                          <mo>&#x222a;</mo>
-                          <mi>ngrams</mi><mo>(</mo><mi>answer</mi><mo>)</mo>
-                          <mo>|</mo>
-                        </mrow>
-                      </mfrac>
-                    </mrow>
-                  </math>
-                </center>
-                <br>
-                and set <code>unigram_overlap</code>, <code>bigram_overlap</code>, <code>redundancy = unigram_overlap</code>, <code>novelty = 1 − redundancy</code>.</li>
-            </ul>
+    <ul>
+      <li>Position and length: position∈{0,1}, token count, character count, verbosity (alias of tokens).</li>
+      <li>Digits and symbols: counts of digit characters and a fixed symbol set.</li>
+      <li>Sentiment: a lightweight lexicon-based score normalized by token length.</li>
+      <li>Hedging and safety: densities based on curated phrase lists (“I think…”, “as an AI…”, etc.).</li>
+      <li>Formality: derived from pronoun density and contraction usage.</li>
+      <li>Redundancy and novelty: Jaccard overlaps of unigrams and bigrams between the prompt and answer, with novelty defined as 1 – redundancy.</li>
+    </ul>
 
-            We export <code>examples_with_biases.csv</code> and use it for:
-            <ul>
-              <li>Global correlation and PCA plots of the bias feature space.</li>
-              <li>Conditional error analysis: e.g., how each meta-judge’s accuracy vs. humans varies across bins of length, redundancy, or sentiment.</li>
-            </ul>
+    These features support correlation studies, PCA visualizations, and conditional accuracy analyses used later in the Results section.
 
-            <h2>Causal intervention judge (gradient-based debiasing)</h2>
-            To move from descriptive to causal analysis, we implement a “causal intervention judge” based on Qwen/Qwen2.5-1.5B-Instruct. The experiment proceeds as follows:
+    <h2>Causal intervention judge (gradient-based debiasing)</h2>
 
-            <ol>
-              <li><b>One-time representation pass.</b> Using the same Qwen model and tokenizer, we define <code>build_input(prompt, answer)</code> that embeds
-                <code>"Prompt:\n{prompt}\n\nAnswer:\n{answer}\n"</code>. For each example we can call <code>loglik_score</code> to compute the sequence log-likelihood.</li>
+    To isolate how much a specific bias direction influences model scoring, we construct a causal intervention pipeline using Qwen-2.5-1.5B-Instruct. The workflow is:
 
-              <li><b>Gradient-based bias direction estimation.</b> For a chosen scalar feature <code>bias_key</code> ∈ {<code>length_tokens</code>, <code>sentiment</code>, <code>position</code>, <code>redundancy</code>}:
-                <ul>
-                  <li>We gather all finite values and compute the 10th and 90th percentiles.</li>
-                  <li>We pick up to <code>max_examples_per_group = 4</code> high-bias and low-bias examples.</li>
-                  <li>For each example we run <code>score_and_grad</code>, which:
-                    <ul>
-                      <li>Re-embeds the input using <code>model.get_input_embeddings()</code>.</li>
-                      <li>Enables gradients on the embeddings only.</li>
-                      <li>Backpropagates the summed log-likelihood to get <code>grad</code> with the same shape as the embeddings.</li>
-                    </ul>
-                  </li>
-                  <li>We compute an attribution-style vector by taking the elementwise product <code>embeds * grads</code>, then mean-pooling over tokens to obtain a single <code>D</code>-dimensional vector per example.</li>
-                  <li>We average these vectors separately for the high-bias and low-bias sets and define the bias direction
-                    <br><br>
-                    <center>
-                      <math xmlns="http://www.w3.org/1998/Math/MathML">
-                        <mrow>
-                          <msub><mi>v</mi><mi>b</mi></msub>
-                          <mo>=</mo>
-                          <mi>mean</mi><mo>(</mo><mi>high</mi><mo>)</mo>
-                          <mo>&#x2212;</mo>
-                          <mi>mean</mi><mo>(</mo><mi>low</mi><mo>)</mo>
-                        </mrow>
-                      </math>
-                    </center>
-                    <br>
-                    followed by <code>L2</code> normalization.</li>
-                </ul>
-              </li>
+    <ol>
+      <li>Compute original log-likelihoods for each prompt–answer pair using a unified input format (`"Prompt:\n... Answer:\n..."`).</li>
 
-              <li><b>Projection-based intervention.</b> For evaluation we optionally subsample <code>max_eval_examples = 50</code> examples, then for each:
-                <ul>
-                  <li>Compute <code>orig_loglik</code> using the original embeddings.</li>
-                  <li>Recompute the log-likelihood after projecting out the bias direction:
-                    <pre>dot = torch.matmul(E, v_b)   # [1, T]
-E_debias = E - dot.unsqueeze(-1) * v_b</pre>
-                    and call <code>debiased_score</code> on <code>E_debias</code> to obtain <code>debias_loglik_bias_key</code>.</li>
-                  <li>Store <code>delta_bias_key = debias_loglik_bias_key − orig_loglik</code> together with metadata (question_id, position, correct_label, meta-judge winners).</li>
-                </ul>
-              </li>
-            </ol>
+      <li>Estimate a bias direction for a chosen scalar feature (length_tokens, sentiment, position, redundancy):
+        <ul>
+          <li>Select examples from the high and low ends of the bias distribution (top/bottom deciles, up to 4 per group).</li>
+          <li>For each example, compute gradients of the sequence log-likelihood with respect to token embeddings.</li>
+          <li>Form attribution vectors via elementwise `embeds * grads` and mean-pool over tokens.</li>
+          <li>Average the high-bias and low-bias pooled vectors and take their difference; normalize to obtain a unit direction \(v_b\).</li>
+        </ul>
+      </li>
 
-            We save one CSV per bias <code>bias_key</code> as <code>causal_intervention_results_{bias_key}.csv</code>. In analysis, we examine:
-            <ul>
-              <li>The distribution of <code>delta_bias_key</code> for human-correct vs. human-incorrect answers.</li>
-              <li>How often removing a bias direction would shrink the log-likelihood gap between the human-preferred and human-dispreferred answer in a pair.</li>
-            </ul>
+      <li>Debias each evaluation example by projecting out the direction \(v_b\) from its embedding sequence:
+<pre>E_debias = E - (E · v_b) v_b</pre>
 
-            <h2>Sparse probing of judgment neurons</h2>
-            To localize where correctness and biases are encoded in Qwen-2.5-1.5B, we train layerwise sparse probes on hidden states.
+          then recompute the log-likelihood. We store Δ = (debiased − original) for every example, along with metadata.</li>
+    </ol>
 
-            <ol>
-              <li><b>Hidden state extraction.</b> We re-use the same <code>build_input(prompt, answer)</code> but this time run the model with <code>output_hidden_states=True</code>. This yields a tuple of hidden states (embedding layer + each transformer block), each of shape <code>[1, T, D]</code>. We apply the attention mask and mean-pool over non-padding tokens to get a vector in <code>ℝ^D</code> per layer and example.</li>
-              <li><b>Dataset of representations.</b> We iterate over all examples once in <code>collect_reps_for_all_examples</code>, storing for each layer a matrix <code>X_layer ∈ ℝ^{N×D}</code>. This shared cache is reused for all probes.</li>
-              <li><b>Binary targets.</b> Using the attached <code>bias_features</code> and <code>correct_label</code>, we define probe targets in <code>make_binary_targets</code>:
-                <ul>
-                  <li><b>Correctness:</b> <code>y_correct = correct_label</code>.</li>
-                  <li><b>Position:</b> 1 if position &gt; 0.5 (B), else 0 (A).</li>
-                  <li><b>Length and surface:</b> above-median indicators for <code>length_chars</code>, <code>length_tokens</code>, <code>verbosity</code>, <code>num_digits</code>, <code>num_symbols</code>, <code>pronoun_density</code>, <code>unigram_overlap</code>, <code>bigram_overlap</code>, <code>redundancy</code>, <code>novelty</code>.</li>
-                  <li><b>Sentiment:</b> 1 if <code>sentiment &gt; 0</code>, else 0.</li>
-                  <li><b>Hedging and safety:</b> 1 if <code>hedge_density &gt; 0</code> / <code>safety_density &gt; 0</code>, else 0.</li>
-                  <li><b>Formality:</b> 1 if <code>formality &gt; 0.5</code>, else 0.</li>
-                </ul>
-              </li>
-              <li><b>Layerwise L1-logistic probes.</b> For each target and each layer we train a logistic regression probe with L1 penalty:
-                <pre>clf = LogisticRegression(
-    penalty="l1",
-    solver="saga",
-    max_iter=500,
-)</pre>
-                using an 80/20 stratified train–test split. For each trained probe we record:
-                <ul>
-                  <li><code>accuracy</code>: test-set classification accuracy.</li>
-                  <li><code>sparsity</code>: fraction of weights that are exactly zero.</li>
-                </ul>
-              </li>
-            </ol>
+    We repeat this for each bias dimension, producing CSV logs of Δ distributions that quantify which biases have large, neutral, or harmful causal influence.
 
-            We aggregate the results into <code>probe_results_all_targets.csv</code> / <code>.parquet</code> with columns <code>target</code>, <code>layer</code>, <code>accuracy</code>, <code>sparsity</code>. In the results section we plot:
-            <ul>
-              <li>Accuracy vs. layer curves for correctness vs. length, redundancy, sentiment, etc.</li>
-              <li>Sparsity vs. layer curves to see whether bias signals are “spread out” or concentrated in a few dimensions.</li>
-            </ul>
-            Together with the causal intervention logs, these experiments give a detailed picture of how LLM judges encode and act on stylistic biases, and how ensemble strategies modulate those effects.
-		    </div>
-		    <div class="margin-right-block">
-					We will visualize meta-judge agreement with humans, bias-correlated error rates, probe accuracy curves, and <code>delta_bias_key</code> histograms to tie together surface-level biases, internal representations, and causal influence on scores.
-		    </div>
-		</div>
+    <h2>Sparse probing across layers</h2>
 
-<div class="content-margin-container" id="results">
-				<div class="margin-left-block">
-				</div>
-		    <div class="main-content-block">
-						<h1>Results &amp Discussion</h1>
-						<div style="text-align:center;">
-  <img src="./1ss.png" width="400px" />
-  <div style="font-size:14px; color:#555;">
-    <b>Figure X.</b> Correlation matrix of extracted bias features across all answers.
+    To localize bias and correctness signals inside the network, we train layerwise L1-regularized logistic probes:
+
+    <ol>
+      <li>For every example, run Qwen-2.5-1.5B with `output_hidden_states=True` and mean-pool each layer’s hidden state over unmasked tokens, producing one D-dimensional vector per layer.</li>
+      <li>Construct binary targets: correctness, position, sentiment, length-threshold indicators, redundancy, novelty, hedging, safety, formality, pronoun density, overlap metrics, and others.</li>
+      <li>Train a separate L1-penalized logistic regression probe per layer and per target (80/20 stratified split). Record the probe’s classification accuracy and sparsity (fraction of zero weights).</li>
+    </ol>
+
+    These probe profiles show how easily each feature can be linearly decoded from each layer, and their layer-wise correlations reveal how different biases share or diverge in representational structure.
+
+    <br><br>
+    Together, the causal intervention logs, meta-judge comparisons, and probe results give a detailed picture of how LLM judges encode surface properties, which signals dominate their scoring behavior, and how these preferences can be manipulated or mitigated.
+  </div>
+
+  <div class="margin-right-block">
+    We visualize meta-judge accuracy, PCA structure, Δ-log-likelihood distributions, and probe accuracy curves to link surface biases, internal representations, and causal influence.
   </div>
 </div>
 
-<p>
-  This figure shows that several bias features naturally cluster. Redundancy, unigram overlap,
-  and bigram overlap are nearly perfectly correlated, forming a single axis capturing
-  “prompt-copying” behavior, with novelty acting as its inverse. Length-related features
-  (token count, character count, digits, symbols) also correlate, suggesting verbosity behaves
-  as a coherent stylistic mode. In contrast, position, sentiment, hedging, safety language,
-  formality, and pronoun density exhibit weak correlations with other features, implying
-  they represent independent bias mechanisms worth probing separately.
-</p>
 
-<div style="text-align:center;">
-  <img src="./2ss.png" width="400px" />
-  <div style="font-size:14px; color:#555;">
-    <b>Figure X.</b> PCA loadings of bias features, showing how each bias contributes to the top two principal components.
-  </div>
-</div>
+    <div class="content-margin-container" id="results">
+        <div class="margin-left-block">
+        </div>
+        <div class="main-content-block">
+            <h1>Results &amp; Discussion</h1>
 
-<p>
-  PCA loadings reveal that several surface features cluster into distinct groups: length-related metrics
-  (tokens, characters, symbols) dominate one principal direction, while redundancy and overlap dominate another.
-  Meanwhile, stylistic indicators such as pronoun density, sentiment, and formality occupy a separate, weaker
-  axis of variation. This separation suggests that the biases present in LLM-generated text are multi-factor and
-  not reducible to a single latent dimension, motivating the need for both probing and causal methods to isolate
-  their effects.
-</p>
+            <h2>3.1 What biases exist in the LLM-as-jury?</h2>
 
-<p>
-  This figure shows that all of our bias features have only weak correlation with human correctness labels:
-  even the strongest signals (character length, novelty, redundancy, unigram overlap) barely exceed a
-  correlation of 0.06. Stylistic features such as hedging, safety language, pronoun use, and formality are
-  even less predictive of correctness. Together with our PCA results, this suggests that superficial style
-  dimensions are largely orthogonal to whether an answer is actually good, motivating the need to treat
-  them as biases rather than useful scoring features for an LLM judge.
-</p>
+            <div style="text-align:center;">
+              <img src="./1ss.png" width="400px" />
+              <div style="font-size:14px; color:#555;">
+                <b>Figure 1.</b> Correlation matrix of extracted bias features across all answers.
+              </div>
+            </div>
 
-<div style="text-align:center;">
-  <img src="./5_ss.png" width="600px" />
-  <div style="font-size:14px; color:#555;">
-    <b>Figure X.</b> PCA projection of bias features, colored by answer position (A vs. B).
-  </div>
-</div>
+            <p>
+              The correlation matrix shows that several bias features naturally cluster. Redundancy, unigram overlap,
+              and bigram overlap are almost perfectly correlated, forming a single “prompt-copying” axis with novelty as its inverse.
+              Length-related features (tokens, characters, digits, symbols) form another coherent group, indicating that verbosity behaves
+              as a consistent stylistic mode. In contrast, position, sentiment, hedging, safety language, formality, and pronoun density
+              have only weak correlations with other features, suggesting they represent distinct bias mechanisms worth analyzing separately.
+            </p>
 
-<p>
-  This plot shows a surprisingly clean separation between answers labeled “A” and “B” in the PCA space,
-  indicating that position in the prompt is strongly entangled with bias features (e.g., verbosity,
-  redundancy, length). Because PCA is unsupervised, this separation implies that surface-level expression
-  patterns differ systematically between the two answer slots. This reinforces that position bias is not a
-  trivial artifact—it genuinely changes how answers are written, which may in turn influence LLM judges.
-</p>
+            <div style="text-align:center;">
+              <img src="./2ss.png" width="400px" />
+              <div style="font-size:14px; color:#555;">
+                <b>Figure 2.</b> PCA loadings of bias features, showing how each bias contributes to the top two principal components.
+              </div>
+            </div>
 
-<p>
-  This KDE shows that most answers cluster around short-to-medium lengths with near-neutral sentiment,
-  and there is no strong nonlinear coupling between the two features. While length varies widely across
-  responses, sentiment stays tightly concentrated around zero, meaning it likely plays only a weak role
-  in influencing model preferences. This reinforces earlier findings that stylistic features tied to
-  verbosity matter more than emotional tone.
-</p>
+            <p>
+              PCA loadings confirm this structure: one principal component is dominated by length/verbosity, while another is dominated
+              by redundancy and overlap. Stylistic indicators such as pronoun density, sentiment, hedging, safety, and formality occupy
+              a separate, weaker axis of variation. Importantly, none of these components aligns strongly with correctness, anticipating
+              our later result that stylistic biases are largely orthogonal to answer quality.
+            </p>
 
-<div style="text-align:center;">
-  <img src="./7ss.png" width="400px" />
-  <div style="font-size:14px; color:#555;">
-    <b>Figure X.</b> Distribution of Δ log-likelihood (debiased − original) across three bias directions:
-    <i>length_tokens</i>, <i>position</i>, and <i>redundancy</i>. The dashed vertical line marks zero change.
-  </div>
-</div>
+            <div style="text-align:center;">
+              <img src="./3ss.png" width="400px" />
+              <div style="font-size:14px; color:#555;">
+                <b>Figure 3.</b> Bias influence map: absolute correlation between each bias feature and human correctness.
+              </div>
+            </div>
 
-<p>
-  This figure compares how strongly each bias direction shifts model preferences after debiasing.
-  <i>Position</i> shows consistently positive Δ log-likelihood, meaning removing positional bias tends to make
-  the correct answer more likely. In contrast, <i>length_tokens</i> produces mostly negative shifts, suggesting
-  that reducing verbosity-related preferences often hurts performance. <i>Redundancy</i> has a mixed but slightly
-  positive distribution, implying moderate recoverable bias. Overall, this plot highlights which biases are
-  “safe” to remove and which encode information the model is actually using.
-</p>
+            <p>
+              The bias influence map shows that all features are only weakly correlated with human correctness; even the largest effects
+              (length, redundancy, novelty, unigram overlap) are on the order of 0.05–0.06. Hedging, safety language, formality, and
+              pronoun usage are even less predictive. This supports our hypothesis that surface style is not a reliable signal of quality
+              and should be treated as bias rather than a useful evaluation feature.
+            </p>
 
-<p>
-  This figure reveals that removing <i>position</i> bias reliably improves performance for both correct and incorrect cases,
-  while removing <i>length_tokens</i> sharply decreases log-likelihood—suggesting verbosity signals encode useful information the model relies on.
-  <i>Redundancy</i> shows mixed but mostly mild effects, with improvements primarily in examples originally misjudged.
-  Overall, the plot highlights which biases meaningfully distort judgments (position) and which are entangled with helpful cues (length).
-</p>
+            <div style="text-align:center;">
+              <img src="./5_ss.png" width="600px" />
+              <div style="font-size:14px; color:#555;">
+                <b>Figure 4.</b> PCA projection of bias features, colored by answer position (A vs. B).
+              </div>
+            </div>
 
-<p> Across all targets, probes reveal that most bias-related features (e.g., formality, sentiment, redundancy, position, length) are recoverable from internal model representations with very high accuracy, often exceeding 0.9. In contrast, correctness is consistently difficult to linearly decode, remaining near 0.55–0.60 across layers. This gap suggests that the model strongly encodes stylistic and structural patterns while correctness remains a diffuse, non-linearly distributed property that does not localize cleanly in any single layer. </p>
+            <p>
+              Surprisingly, answers from slots A and B separate cleanly in the PCA space, meaning that the two positions induce distinct
+              stylistic regimes (e.g., in length, redundancy, and overlap). Because PCA is unsupervised, this indicates that position is
+              not just a dummy index but changes how answers are written, helping explain why LLM judges often show strong position bias.
+            </p>
 
-<p> Bias features become highly decodable very early—often by layers 2–6—where they plateau near perfect accuracy and remain stable across depth. This stability indicates that the model constructs style- and pattern-related features early and preserves them throughout processing. Correctness, by contrast, shows no such transition, reinforcing that it is not concentrated in a narrow representational subspace but emerges from more distributed interactions across layers. </p>
+            <h2>3.2 Causal interventions on bias directions</h2>
 
-<p> Most bias probes maintain high sparsity (≥80%), meaning that only a small subset of embedding dimensions is needed to decode them. This sparsity, paired with high accuracy, implies that these biases align with low-dimensional, highly structured directions encoded inside the embedding space. Correctness remains both low-accuracy and high-sparsity, further supporting the idea that it does not correspond to a single interpretable direction but is instead entangled across features. </p>
+            <div style="text-align:center;">
+              <img src="./7ss.png" width="600px" />
+              <div style="font-size:14px; color:#555;">
+                <b>Figure 5.</b> Distribution of Δ log-likelihood (debiased − original) across three bias directions:
+                <i>length_tokens</i>, <i>position</i>, and <i>redundancy</i>. The dashed line marks zero change.
+              </div>
+            </div>
 
-<p> Similarity analyses (correlation matrices and PCA of probe profiles) show that many biases cluster together, forming a coherent family of easily decoded attributes. Novelty, overlap, redundancy, formality, and sentiment share highly correlated accuracy profiles. Correctness is an outlier, consistently isolated from all other targets in both PCA and correlation analyses. This separation highlights that correctness is represented fundamentally differently from stylistic biases and cannot be corrected simply by zeroing out a small number of directions. </p>
+            <p>
+              Projecting out the <i>position</i> direction consistently increases log-likelihood for human-preferred answers,
+              indicating that position bias actively harms the judge’s performance and can be removed without sacrificing useful signal.
+              Intervening on <i>redundancy</i> yields smaller but mostly positive shifts, suggesting a moderate, recoverable bias toward
+              copying the prompt. In contrast, removing the <i>length_tokens</i> direction often <i>reduces</i> log-likelihood, implying that
+              what looks like a verbosity “bias” actually carries information the model relies on to score answers.
+            </p>
 
-<figure>
-    <img src="./8ss.png" alt="Probe accuracy across layers for key targets" style="width:90%;">
-    <figcaption><strong>Figure 5.</strong> Probe accuracy across layers for correctness and major bias features.</figcaption>
-</figure>
+            <div style="text-align:center;">
+              <img src="./6ss_box.png" width="600px" />
+              <div style="font-size:14px; color:#555;">
+                <b>Figure 6.</b> Effect of debiasing on Δ log-likelihood, split by human correctness and bias type.
+              </div>
+            </div>
 
-<p>
-This figure shows that all bias features (length, position, redundancy, sentiment, formality) become highly linearly decodable by very early layers, reaching ~0.9–1.0 accuracy by layers 5–10. In contrast, correctness never becomes linearly decodable, hovering around ~0.55 across the entire network depth. This gap suggests that the model stores superficial stylistic signals in easily readable directions, while correctness is never explicitly represented as a simple feature. The consistent low decodability of correctness also reinforces that these biases act as stronger latent predictors for the model than actual answer quality.
-</p>
+            <p>
+              When we split Δ log-likelihood by human correctness, the picture sharpens. Removing <i>position</i> bias improves scores for both
+              correct and incorrect answers, but the gains are largest on pairs that were initially misjudged, directly supporting our
+              hypothesis that position is a harmful bias. For <i>length_tokens</i>, debiasing consistently harms both groups, confirming that
+              length is entangled with genuinely useful cues. <i>Redundancy</i> lies in between: debiasing helps on many misjudged examples but has
+              smaller effects elsewhere. Overall, these interventions show that not all “biases” are equal—some are safe to remove, while
+              others behave more like compressed heuristics for quality.
+            </p>
 
-<figure>
-    <img src="./9ss.png" alt="Correlation between targets' accuracy profiles over layers" style="width:90%;">
-    <figcaption><strong>Figure 6.</strong> Correlation heatmap showing similarity between targets’ layer-wise probe accuracy curves.</figcaption>
-</figure>
+            <h2>3.3 Where do correctness and biases live in the network?</h2>
 
-<p>
-This heatmap shows that most bias features share highly similar layer-wise decodability patterns, forming a tight correlated cluster. Correctness stands out as the only feature with weak or negative correlations to many others, reinforcing that it behaves fundamentally differently from stylistic or structural biases. The block structure reveals that the model organizes many biases together—suggesting a shared representational substrate—while correctness lies outside this cluster. This supports the conclusion that biases are encoded as a coherent “style manifold,” whereas correctness is not directly embedded in any comparably simple direction.
-</p>
+            <figure>
+                <img src="./8ss.png" alt="Probe accuracy across layers for key targets" style="width:90%;">
+                <figcaption><strong>Figure 7.</strong> Probe accuracy across layers for correctness and major bias features.</figcaption>
+            </figure>
 
+            <p>
+              Sparse probes reveal a striking gap between correctness and stylistic biases. Features such as length, position, redundancy,
+              sentiment, and formality become highly decodable (≥0.9 accuracy) by very early layers (around layers 5–10) and stay that way
+              throughout the network. Correctness, by contrast, never becomes linearly decodable and hovers near 0.55 across all layers.
+              This directly supports our hypothesis: biases align with simple low-dimensional directions, whereas correctness does not.
+            </p>
 
+            <figure>
+                <img src="./9ss.png" alt="Correlation between targets' accuracy profiles over layers" style="width:90%;">
+                <figcaption><strong>Figure 8.</strong> Correlation heatmap showing similarity between targets’ layer-wise probe accuracy curves.</figcaption>
+            </figure>
 
+            <p>
+              The correlation heatmap shows that most bias features share very similar layer-wise decodability profiles, forming a tight
+              cluster that we can think of as a “style manifold.” Correctness is the clear outlier: its probe accuracy profile is only
+              weakly or negatively correlated with those of other targets. Combined with the high sparsity of successful bias probes,
+              this suggests that stylistic preferences are encoded in a compact, structured subspace, while correctness is distributed and
+              not directly tied to any single set of dimensions. In other words, LLM judges make decisions in a space where bias is
+              geometrically simple but correctness is geometrically messy.
+            </p>
 
+            <p>
+              Taken together, the descriptive statistics, causal interventions, and probing results support our main hypothesis.
+              LLM-as-jury systems encode many stylistic biases as clear directions that we can decode and manipulate. Some of these,
+              like position, are genuinely harmful and can be removed to bring the judge closer to human preferences. Others, like length,
+              function more like heuristics that correlate weakly with quality and are risky to zero out. Correctness itself never becomes
+              an easily accessible feature, highlighting a fundamental mismatch between what is easy for the model to represent and what
+              we actually want it to reward.
+            </p>
+        </div>
+        <div class="margin-right-block">
+        </div>
+    </div>
 
+    <div class="content-margin-container" id="conclusion">
+        <div class="margin-left-block">
+        </div>
+        <div class="main-content-block">
+            <h1>Conclusion</h1>
+            Our analysis suggests that LLM-based judges are not monolithic “oracles,” but systems whose preferences can be decomposed into
+            interpretable bias dimensions and manipulated via simple linear interventions. Multi-model ensembles (“LLM-as-jury”) smooth out
+            some idiosyncratic biases of individual judges, especially extreme position and verbosity preferences, but they do not fully
+            eliminate systematic tendencies toward redundancy, politeness, and prompt-copying.<br><br>
 
+            Causal interventions show that some biases, notably position, can be projected out with clear benefits to alignment with human
+            judgments, while others such as length encode genuinely useful cues and are dangerous to suppress wholesale. Probing results
+            complement this picture: stylistic and structural features are highly linearly decodable from early layers, forming a compact
+            “style manifold,” whereas correctness remains diffuse and never becomes an easily accessible feature. This structural mismatch
+            explains why naive reliance on judge scores risks baking shallow biases into training loops, leaderboards, and deployment
+            decisions.<br><br>
 
+            There are important limitations. Our interventions assume approximate linearity of bias directions, and highly non-linear
+            interactions may go undetected. Probes measure decodability, not causality, and MT-Bench covers a limited range of tasks and
+            domains. We also focus on relatively small open-source judges; larger proprietary models may exhibit different, subtler bias
+            structures. Despite these caveats, the tools we develop—multi-bias feature extraction, causal projection, and layerwise sparse
+            probing—provide a reusable framework for stress-testing future LLM-as-judge systems and for designing debiased evaluators that
+            are more faithful to human intent.
+        </div>
+        <div class="margin-right-block">
+          Future directions: train a dedicated, debiased judge using projected representations; extend to other modalities (e.g., vision–language); and explore counterfactual data augmentation to further break spurious style–quality correlations.
+        </div>
+    </div>
 
+    <div class="content-margin-container" id="citations">
+        <div class="margin-left-block">
+        </div>
+        <div class="main-content-block">
+            <div class='citation' id="references" style="height:auto"><br>
+              <span style="font-size:16px">References:</span><br><br>
+              <a id="ref_1"></a>[1] <a href="https://en.wikipedia.org/wiki/Allegory_of_the_cave">Allegory of the Cave</a>, Plato, c. 375 BC<br><br>
+              <a id="ref_2"></a>[2] <a href="https://arxiv.org/abs/2306.05685">Judging LLM-as-a-Judge with MT-Bench</a>, Zheng et al., 2023<br><br>
+              <a id="ref_3"></a>[3] <a href="https://arxiv.org/abs/2406.07791">Biases in Large Language Model Evaluations: A Causal and Probing Study</a>, Crabbé et al., 2024<br><br>
+              <a id="ref_4"></a>[4] <a href="https://arxiv.org/abs/2410.02736">Justice or Prejudice? Quantifying Biases in LLM-as-a-Judge</a>, Ye et al., 2024<br><br>
+              <a id="ref_5"></a>[5] <a href="https://arxiv.org/abs/2406.13831">Mitigating the Bias of Large Language Model Evaluation</a>, Zhou et al., 2024<br><br>
+              <a id="ref_6"></a>[6] <a href="https://arxiv.org/abs/2104.08197">Probing Artificial Neural Networks: Insights from Neuroscience</a>, Ivanova et al., 2021<br><br>
+            </div>
+        </div>
+        <div class="margin-right-block">
+        </div>
+    </div>
 
-
-
-
-
-
-
-		    </div>
-		    <div class="margin-right-block">
-
-		    </div>
-		</div>
-
-		<div class="content-margin-container" id="conclusion">
-				<div class="margin-left-block">
-				</div>
-		    <div class="main-content-block">
-						<h1>Conclusion</h1>
-						Our analysis suggests that LLM-based judges are not monolithic “oracles,” but systems whose preferences can be decomposed into interpretable bias dimensions and manipulated via simple linear interventions. Multi-model ensembles (“LLM-as-jury”) smooth out some idiosyncratic biases of individual judges, especially extreme verbosity preferences, but they do not fully eliminate systematic tendencies toward redundancy, politeness, and certain stylistic patterns. The causal intervention experiments show that a non-trivial fraction of judge behavior is attributable to specific directions in embedding space: projecting out a verbosity or redundancy direction can measurably reduce bias sensitivity while preserving much of the correctness signal.<br><br>
-
-            The probing analysis indicates that lexical and stylistic biases are often linearly decodable from early and mid layers, while correctness signals emerge later. This layering supports a useful mental model: the network first builds a rich representation of surface form and style, then aggregates it into preference decisions. If downstream systems naively use judge scores as ground truth, they risk baking these shallow biases into training loops, leaderboards, and deployment decisions.<br><br>
-
-            There are important limitations. Our interventions assume that bias is approximately linear in representation space; highly nonlinear interactions may go undetected. Probes measure decodability, not causality, and MT-Bench covers a limited range of tasks and domains. We also focus on relatively small open-source judges; larger proprietary models may exhibit different, potentially subtler, bias structures. Despite these caveats, the tools we develop—multi-bias feature extraction, causal projection, and layerwise probing—provide a reusable framework for stress-testing any future LLM-as-judge system and for designing debiased evaluators that are more faithful to human intent.
-		    </div>
-		    <div class="margin-right-block">
-          Future directions: train a dedicated, debiased judge using our projected representations; extend to other modalities (e.g., vision–language); and explore counterfactual data augmentation to further break spurious style–quality correlations.
-		    </div>
-		</div>
-
-		<div class="content-margin-container" id="citations">
-				<div class="margin-left-block">
-				</div>
-		    <div class="main-content-block">
-						<div class='citation' id="references" style="height:auto"><br>
-							<span style="font-size:16px">References:</span><br><br>
-							<a id="ref_1"></a>[1] <a href="https://en.wikipedia.org/wiki/Allegory_of_the_cave">Allegory of the Cave</a>, Plato, c. 375 BC<br><br>
-							<a id="ref_2"></a>[2] <a href="https://arxiv.org/abs/2306.05685">Judging LLM-as-a-Judge with MT-Bench</a>, Zheng et al., 2023<br><br>
-							<a id="ref_3"></a>[3] <a href="https://arxiv.org/abs/2406.07791">Biases in Large Language Model Evaluations: A Causal and Probing Study</a>, Crabbé et al., 2024<br><br>
-						</div>
-		    </div>
-		    <div class="margin-right-block">
-            <!-- margin notes for reference block here -->
-		    </div>
-		</div>
-
-	</body>
+  </body>
 
 </html>
